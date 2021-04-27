@@ -55,6 +55,7 @@
     "import/prefer-default-export": "off",
     "jsx-a11y/anchor-is-valid": "off",
     "no-plusplus": "off",
+    "react/react-in-jsx-scope": "off",
     "no-return-assign": "off",
     "global-require": "off",
     "no-param-reassign": "warn",
@@ -68,7 +69,9 @@
     "no-alert": "error",
     "eol-last": "error",
     "semi": "error",
-    "no-console": "error"
+//    "no-console": "error",
+    "import/no-extraneous-dependencies": ["error", {"devDependencies": false, "optionalDependencies": false, "peerDependencies": false}]
+
   },
   "overrides": []
 }

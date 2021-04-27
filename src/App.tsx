@@ -1,14 +1,22 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { Provider } from 'react-redux';
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './App.scss';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import InfinityPagination from './Pages/InfinityPagination/InfinityPagination';
+import Pagination from './Pages/PaginationPage/Pagination';
+import createStore from './redux/store';
 
 function App(): JSX.Element {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-      </header>
-    </div>
+    <Provider store={createStore}>
+      <Router>
+        <Switch>
+          <Route exact path="/Infinity" component={InfinityPagination} />
+          <Route exact path="/" component={Pagination} />
+        </Switch>
+      </Router>
+    </Provider>
   );
 }
 
