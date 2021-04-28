@@ -1,27 +1,29 @@
-import React, { Dispatch, SetStateAction } from 'react';
+import React, { useState } from 'react';
+
+// const defaultProps = {
+//   initialPage: 1,
+//   pageSize: 10,
+// };
 
 interface ButtonProps {
-  totalPages: number;
   // eslint-disable-next-line react/no-unused-prop-types
-  pageLimit: number;
+  listItems: ItemsType[] | undefined;
   // eslint-disable-next-line react/no-unused-prop-types
-  pageBoards: number;
-  // eslint-disable-next-line react/no-unused-prop-types
-  setPageLimit: Dispatch<SetStateAction<number>>;
-  // eslint-disable-next-line react/no-unused-prop-types
-  setPage: Dispatch<SetStateAction<number>>;
+  onChangePage: () => void;
 }
-export default function PagButton(props: ButtonProps) {
-  const { totalPages } = props;
+export default function PagButton(props: ButtonProps): JSX.Element {
+  const { listItems } = props;
 
-  const buttons = null;
-  // eslint-disable-next-line no-empty
-  for (let i = 0; i < totalPages; i++) {}
-  return (
-    <div className="pagination">
-      <button>First</button>
-      {buttons}
-      <button>Last</button>
-    </div>
-  );
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [pageToShow, setPageToShow] = useState();
+  // eslint-disable-next-line no-lone-blocks
+  {
+    // eslint-disable-next-line array-callback-return
+    listItems?.map((e) => {
+      // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+      e.title;
+    });
+  }
+
+  return <ul className="pagination" />;
 }

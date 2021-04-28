@@ -1,16 +1,14 @@
-const init = {
-  list: [],
-};
+interface ItemsProps {
+  data: ItemsType[];
+  type: string;
+}
 
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types,@typescript-eslint/ban-ts-comment
-// @ts-ignore
-export default function items(state = [], action) {
+export default function items(state = [], action: ItemsProps): ItemsType[] {
   switch (action.type) {
     case 'USER_FETCH_SUCCEEDED':
       return [...state];
     case 'USER_FETCH_REQUESTED':
-      init.list = action.data;
-      return init.list;
+      return action.data;
     default:
       return state;
   }

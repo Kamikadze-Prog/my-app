@@ -10,11 +10,8 @@ interface CombineState {
 }
 
 function Pagination(): JSX.Element {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [listItems, setListItems] = useState<ItemsType[]>();
-  const [totalPages, setTotalPages] = useState(0);
-  const [pageBoards, setPageBoards] = useState(1);
-  const [pageLimit, setPageLimit] = useState(2);
+  const [pageOfItems, setPageOfItems] = useState([]);
 
   const items = useSelector((state: CombineState) => state.items);
 
@@ -26,23 +23,22 @@ function Pagination(): JSX.Element {
   useEffect(() => {
     if (items.length) {
       setListItems(items);
-      setTotalPages(Math.ceil(items.length / 10));
     }
   }, [items]);
 
-  // listItems ? listItems.map((item: ItemsType) => <div key={item.title}> {item.title} </div>) : <span>Load</span>;
-
+  function onChangePage() {
+    setPageOfItems(pageOfItems);
+  }
   return (
     <div>
       <Link to="Infinity"> Infinity Scroll </Link>
       <div>Pagination</div>
-      <PagButton
-        totalPages={totalPages}
-        pageLimit={pageLimit}
-        pageBoards={pageBoards}
-        setPage={setPageBoards}
-        setPageLimit={setPageLimit}
-      />
+      {listItems ? (
+        pageOfItems.map((item: ItemsType) => <div key={item.title}> {item.title} </div>)
+      ) : (
+        <span>Loading</span>
+      )}
+      <PagButton listItems={listItems} onChangePage={onChangePage} />
     </div>
   );
 }
