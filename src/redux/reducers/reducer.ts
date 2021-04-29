@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
 
-import items from '../Items';
-import filterReducer from '../filterReducer';
+import toDoReducer from './toDoReducer';
+import filterReducer from './filterReducer';
 
 const rootReducer = combineReducers({
-  items,
+  toDoReducer,
   filterReducer,
 });
 

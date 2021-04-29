@@ -1,0 +1,45 @@
+$primary: #0f63c9;
+$white: #dedddd;
+$sky: #143663;
+
+.paginationButton {
+  display: inline-block;
+  border: none;
+  border-right: 1px solid white;
+  padding: 10px 20px;
+  margin: 0;
+  text-decoration: none;
+  background: $primary;
+  color: $white;
+  font-family: sans-serif;
+  font-size: 1rem;
+  cursor: pointer;
+  text-align: center;
+  transition: background 250ms ease-in-out,
+  transform 150ms ease;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  &:hover,
+  &:focus {
+    background: $primary;
+  }
+
+  &:focus {
+    outline-offset: -4px;
+  }
+
+  &disabled,
+  &[disabled] {
+    color: white;
+    background-color: $sky;
+    border-color: 1px solid $white;
+    cursor: default;
+  }
+  &:active {
+    transform: scale(0.99);
+    border-color: $white;
+    color: $white;
+    background-color: $sky;
+  }
+}

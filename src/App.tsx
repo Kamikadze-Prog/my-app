@@ -1,11 +1,9 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { Provider } from 'react-redux';
 import React from 'react';
-import './App.scss';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import InfinityPagination from './Pages/InfinityPagination/InfinityPagination';
-import Pagination from './Pages/PaginationPage/Pagination';
-import createStore from './redux/store';
+import InfinityPagination from './pages/InfinityPagination/InfinityPagination';
+import PaginationPage from './pages/PaginationPage/PaginationPage';
+import createStore from './redux/store/store';
 
 function App(): JSX.Element {
   return (
@@ -13,7 +11,7 @@ function App(): JSX.Element {
       <Router>
         <Switch>
           <Route exact path="/Infinity" component={InfinityPagination} />
-          <Route exact path="/" component={Pagination} />
+          <Route exact path="/" component={PaginationPage} />
         </Switch>
       </Router>
     </Provider>
