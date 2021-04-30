@@ -8,22 +8,22 @@ const defaultProps = {
 };
 
 interface PaginationProps {
-  listItems: ItemsType[];
+  toDoItems: ItemsType[];
   onChangePage: (items: { start: number; end: number }) => void;
 }
 
 export default function Pagination(props: PaginationProps): JSX.Element {
-  const { listItems, onChangePage } = props;
-  const [state, setState] = useState<PagerType>({
+  const { toDoItems, onChangePage } = props;
+  const [state, setState] = useState<Pager>({
     pager: {
-      totalItems: listItems.length,
+      totalItems: toDoItems.length,
       currentPage: 0,
       pageSize: defaultProps.maxPages,
-      totalPages: Math.ceil(listItems.length / 10),
+      totalPages: Math.ceil(toDoItems.length / 10),
       startPage: 0,
       endPage: 0,
       startIndex: 0,
-      endIndex: listItems.length - 1,
+      endIndex: toDoItems.length - 1,
       pages: [],
     },
   });
@@ -75,7 +75,7 @@ export default function Pagination(props: PaginationProps): JSX.Element {
       return;
     }
 
-    const newPager = getPager(listItems.length, page, pageSize, maxPages);
+    const newPager = getPager(toDoItems.length, page, pageSize, maxPages);
 
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
@@ -85,9 +85,9 @@ export default function Pagination(props: PaginationProps): JSX.Element {
 
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
-  const handleClick = (event) => {
-    event.preventDefault();
-    const { name } = event.target;
+  const handleClick = (e) => {
+    e.preventDefault();
+    const { name } = e.target;
     switch (name) {
       case 'First':
         setPage(1);
@@ -111,7 +111,7 @@ export default function Pagination(props: PaginationProps): JSX.Element {
   };
 
   useEffect(() => {
-    if (listItems && listItems.length) {
+    if (toDoItems && toDoItems.length) {
       setPage(defaultProps.initialPage);
     }
   }, []);
@@ -120,18 +120,8 @@ export default function Pagination(props: PaginationProps): JSX.Element {
     <>
       {!pager.pages || pager.pages.length <= 1 ? null : (
         <div className="buttonsWrapper">
-          <PaginationButtons
-            title="First"
-            toFirstPage="First"
-            handleClick={handleClick}
-            disabled={pager.currentPage === 1}
-          />
-          <PaginationButtons
-            title="Prev"
-            toFirstPage="Prev"
-            handleClick={handleClick}
-            disabled={pager.currentPage === 1}
-          />
+          <PaginationButtons title="First" name="First" handleClick={handleClick} disabled={pager.currentPage === 1} />
+          <PaginationButtons title="Prev" name="Prev" handleClick={handleClick} disabled={pager.currentPage === 1} />
 
           {pager.pages.map((page: number, index: number) => {
             const pageStart = page === 1 ? page : (page - 1) * pager.pageSize + 1;
@@ -152,13 +142,13 @@ export default function Pagination(props: PaginationProps): JSX.Element {
 
           <PaginationButtons
             title="Next"
-            toFirstPage="Next"
+            name="Next"
             handleClick={handleClick}
             disabled={pager.currentPage === pager.totalPages}
           />
           <PaginationButtons
             title="Last"
-            toFirstPage="Last"
+            name="Last"
             handleClick={handleClick}
             disabled={pager.currentPage === pager.totalPages}
           />

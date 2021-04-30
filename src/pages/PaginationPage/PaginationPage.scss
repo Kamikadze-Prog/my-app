@@ -1,7 +1,11 @@
+.navigation {
+  padding: 10px;
+}
+
 .paginationWrapper {
   width: 800px;
   margin: 40px auto 0 auto;
- }
+}
 
 .mainText {
   padding: 10px;
@@ -11,7 +15,8 @@
   display: flex;
   flex-direction: column;
   padding: 10px;
- }
+}
+
 .paginationItem {
   padding-bottom: 5px;
 }

@@ -20,8 +20,7 @@ $sky: #143663;
   -webkit-appearance: none;
   -moz-appearance: none;
 
-  &:hover,
-  &:focus {
+  &:hover {
     background: $primary;
   }
 
@@ -36,6 +35,7 @@ $sky: #143663;
     border-color: 1px solid $white;
     cursor: default;
   }
+
   &:active {
     transform: scale(0.99);
     border-color: $white;
