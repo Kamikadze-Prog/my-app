@@ -14,7 +14,7 @@ function PaginationPage(): JSX.Element {
   useEffect(() => {
     dispatch({ type: Fetch.TODO_FETCH_SUCCEEDED });
   }, []);
-  /* Test Origin */
+
   useEffect(() => {
     if (toDoReducer.length) {
       setToDoItems(toDoReducer);
